@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 16:51:02 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/06 17:05:18 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/08 22:02:20 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int		ft_check_file(char *buf)
 {
 	int		i;
 	char	*str;
-	
-	t_param *tmp_param;
+	t_param	*tmp_param;
 
 	i = 0;
 	str = first_line(buf);
@@ -40,15 +39,15 @@ int		ft_check_file(char *buf)
 		if (str[i] == tmp_param->obst)
 			i++;
 		if (str[i] == tmp_param->full)
-			return(1);
+			return (1);
 	}
-	return(ft_error());
+	return (ft_error());
 }
 
 int		ft_check_char(char *buf)
 {
 	int		i;
-	t_param *tmp_param;
+	t_param	*tmp_param;
 
 	i = skip_first_line(buf);
 	tmp_param = ft_get_parameters(buf);
@@ -58,15 +57,15 @@ int		ft_check_char(char *buf)
 				buf[i] == tmp_param->obst || buf[i] == '\n')
 			i++;
 		else
-			return(ft_error());
+			return (ft_error());
 	}
 	return (1);
 }
 
 int		ft_check_full_o(char *str)
 {
-	int	i;
-	t_param *tmp_param;
+	int		i;
+	t_param	*tmp_param;
 
 	i = 0;
 	tmp_param = ft_get_parameters(str);

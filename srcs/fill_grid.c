@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 16:19:48 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/06 17:12:42 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/08 22:06:13 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_param		*ft_get_parameters(char *buf)
 	return (params);
 }
 
-void	convert_grid(char **grid, t_coord  coordi, t_param *params)
+void		convert_grid(char **grid, t_coord coordi, t_param *params)
 {
 	int i;
 	int j;
@@ -51,7 +51,8 @@ void	convert_grid(char **grid, t_coord  coordi, t_param *params)
 	solve_grid(grid, coordi, params);
 }
 
-void	solve_grid2(char **grid, t_coord coordi, char	sub[coordi.max_row][coordi.max_col], t_submat sub_m)
+void		solve_grid2(char **grid, t_coord coordi, char sub[coordi.max_row]
+		[coordi.max_col], t_submat sub_m)
 {
 	sub_m.max_of_s = sub[0][0];
 	sub_m.max_i = 0;
@@ -78,10 +79,10 @@ void	solve_grid2(char **grid, t_coord coordi, char	sub[coordi.max_row][coordi.ma
 	}
 }
 
-void	solve_grid(char **grid, t_coord coordi, t_param *params)
+void		solve_grid(char **grid, t_coord coordi, t_param *params)
 {
 	t_submat	sub_m;
-	char	sub[coordi.max_row][coordi.max_col];
+	char		sub[coordi.max_row][coordi.max_col];
 
 	coordi.row = -1;
 	while (++coordi.row < coordi.max_row)
@@ -93,7 +94,7 @@ void	solve_grid(char **grid, t_coord coordi, t_param *params)
 	print_solved_grid(grid, coordi, sub_m, params);
 }
 
-void	print_solved_grid(char **grid, t_coord coordi,
+void		print_solved_grid(char **grid, t_coord coordi,
 		t_submat sub_m, t_param *params)
 {
 	coordi.row = 0;
@@ -108,7 +109,8 @@ void	print_solved_grid(char **grid, t_coord coordi,
 			}
 			if (grid[coordi.row][coordi.col] == 0)
 				grid[coordi.row][coordi.col] = params->obst;
-			if ((coordi.row < sub_m.max_i + 1 && coordi.row > sub_m.max_i - sub_m.max_of_s) && (coordi.col <= sub_m.max_j &&
+			if ((coordi.row < sub_m.max_i + 1 && coordi.row > sub_m.max_i -
+						sub_m.max_of_s) && (coordi.col <= sub_m.max_j &&
 						coordi.col > sub_m.max_j - sub_m.max_of_s))
 				grid[coordi.row][coordi.col] = params->full;
 			ft_putchar(grid[coordi.row][coordi.col]);
@@ -119,7 +121,7 @@ void	print_solved_grid(char **grid, t_coord coordi,
 	}
 }
 
-void	fill_grid(char *str)
+void		fill_grid(char *str)
 {
 	int		i;
 	char	**grid;

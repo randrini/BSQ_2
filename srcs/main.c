@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 15:37:16 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/06 19:12:17 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/08 22:04:53 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	main(int argc, char **argv)
 	i = 1;
 	if (argc == 1)
 		ft_putstr("map error\n");
-
 	while (i < argc)
 	{
 		buf = parse_file(argv[i]);
