@@ -29,17 +29,18 @@ void			ft_putstr(char *str);
 int				size_row(char *str);
 int				size_col(char *str);
 int				ft_min(int a, int b, int c);
-int				ft_error(void);
-void			ft_check_file(char *str);
-int				ft_check_full_o(char *str);
+
 int				ft_atoi(char *str);
 int				skip_first_line(char *str);
 char			*first_line(char *str);
 int				ft_strlen(char *str);
 void			ft_check_parameters(char *str);
 int				ft_intlen(int n);
-void			ft_check_char(char *buf);
-void			ft_check_grid(char *buf);
+int				ft_error(void);
+int				ft_check_file(char *buf);
+int				ft_check_full_o(char *buf);
+int				ft_check_char(char *buf);
+int				ft_check_grid(char *buf);
 
 typedef struct	s_param
 {

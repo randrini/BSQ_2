@@ -15,13 +15,14 @@
 int		ft_error(void)
 {
 	ft_putstr("map error\n");
-	exit(1);
+	return (0);
 }
 
-void	ft_check_file(char *buf)
+int		ft_check_file(char *buf)
 {
 	int		i;
 	char	*str;
+	
 	t_param *tmp_param;
 
 	i = 0;
@@ -31,7 +32,7 @@ void	ft_check_file(char *buf)
 	{
 		str[ft_strlen_mod(buf) - 3] = '\0';
 		if (ft_atoi(str) != size_col(buf))
-			ft_error();
+			return (ft_error());
 		i = ft_intlen(ft_atoi(str));
 		str = first_line(buf);
 		if (str[i] == tmp_param->empty)
@@ -39,15 +40,12 @@ void	ft_check_file(char *buf)
 		if (str[i] == tmp_param->obst)
 			i++;
 		if (str[i] == tmp_param->full)
-			i++;
-		else
-			ft_error();
+			return(1);
 	}
-	else
-		ft_error();
+	return(ft_error());
 }
 
-void	ft_check_char(char *buf)
+int		ft_check_char(char *buf)
 {
 	int		i;
 	t_param *tmp_param;
@@ -60,8 +58,9 @@ void	ft_check_char(char *buf)
 				buf[i] == tmp_param->obst || buf[i] == '\n')
 			i++;
 		else
-			ft_error();
+			return(ft_error());
 	}
+	return (1);
 }
 
 int		ft_check_full_o(char *str)
@@ -79,13 +78,12 @@ int		ft_check_full_o(char *str)
 		if (str[i] == tmp_param->obst || str[i] == '\n')
 			i++;
 		else
-			return (0);
+			return (1);
 	}
-	ft_error();
-	return (1);
+	return (ft_error());
 }
 
-void	ft_check_grid(char *str)
+int		ft_check_grid(char *str)
 {
 	int i;
 	int	j;
@@ -105,11 +103,12 @@ void	ft_check_grid(char *str)
 		while (str[i] != '\n' && str[i] != '\0')
 			++i;
 		if ((i - 1 - k) != j)
-			ft_error();
+			return (ft_error());
 		else
 		{
 			i++;
 			k = i;
 		}
 	}
+	return (1);
 }

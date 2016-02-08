@@ -14,16 +14,19 @@
 
 int	main(int argc, char **argv)
 {
-	char	*file;
 	int		i;
+	char	*buf;
 
 	i = 1;
 	if (argc == 1)
-		ft_error();
+		ft_putstr("map error\n");
+
 	while (i < argc)
 	{
-		file = parse_file(argv[i]);
-		fill_grid(file);
+		buf = parse_file(argv[i]);
+		if (ft_check_char(buf) == 1 && ft_check_file(buf) == 1 &&
+		ft_check_full_o(buf) == 1 && ft_check_grid(buf) == 1)
+			fill_grid(parse_file(argv[i]));
 		i++;
 	}
 	return (0);

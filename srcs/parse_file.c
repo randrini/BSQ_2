@@ -68,9 +68,5 @@ char	*parse_file(char *file)
 	ret = read(fd, buf, BUFFER_SIZE);
 	buf[ret] = '\0';
 	close(fd);
-	ft_check_file(buf);
-	ft_check_char(buf);
-	ft_check_full_o(buf);
-	ft_check_grid(buf);
 	return (buf);
 }
