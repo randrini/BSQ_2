@@ -51,35 +51,21 @@ void	convert_grid(char **grid, t_coord  coordi, t_param *params)
 	solve_grid(grid, coordi, params);
 }
 
-void	solve_grid(char **grid, t_coord coordi, t_param *params)
+void	solve_grid2(char **grid, t_coord coordi, char	sub[coordi.max_row][coordi.max_col], t_submat sub_m)
 {
-	t_submat	sub_m;
-	char	sub[coordi.max_row][coordi.max_col];
-
-	coordi.row = 0;
-	while (coordi.row < coordi.max_row)
-	{
-		sub[coordi.row][0] = grid[coordi.row][0];
-		coordi.row++;
-	}
-	coordi.col = 0;
-	while (coordi.col < coordi.max_col)
-	{
-		sub[0][coordi.col] = grid[0][coordi.col];
-		coordi.col++;
-	}
 	sub_m.max_of_s = sub[0][0];
 	sub_m.max_i = 0;
 	sub_m.max_j = 0;
-	coordi.row = 1;
-	while (coordi.row < coordi.max_row)
+	coordi.row = 0;
+	while (++coordi.row < coordi.max_row)
 	{
-		coordi.col = 1;
-		while (coordi.col < coordi.max_col)
+		coordi.col = 0;
+		while (++coordi.col < coordi.max_col)
 		{
 			if (grid[coordi.row][coordi.col] == 1)
-				sub[coordi.row][coordi.col] = ft_min(sub[coordi.row][coordi.col - 1], sub[coordi.row - 1][coordi.col],
-						sub[coordi.row - 1][coordi.col - 1]) + 1;
+				sub[coordi.row][coordi.col] = ft_min(sub[coordi.row]
+				[coordi.col - 1], sub[coordi.row - 1][coordi.col],
+				sub[coordi.row - 1][coordi.col - 1]) + 1;
 			else
 				sub[coordi.row][coordi.col] = 0;
 			if (sub[coordi.row][coordi.col] > sub_m.max_of_s)
@@ -88,10 +74,22 @@ void	solve_grid(char **grid, t_coord coordi, t_param *params)
 				sub_m.max_i = coordi.row;
 				sub_m.max_j = coordi.col;
 			}
-			coordi.col++;
 		}
-		coordi.row++;
 	}
+}
+
+void	solve_grid(char **grid, t_coord coordi, t_param *params)
+{
+	t_submat	sub_m;
+	char	sub[coordi.max_row][coordi.max_col];
+
+	coordi.row = -1;
+	while (++coordi.row < coordi.max_row)
+		sub[coordi.row][0] = grid[coordi.row][0];
+	coordi.col = -1;
+	while (++coordi.col < coordi.max_col)
+		sub[0][coordi.col] = grid[0][coordi.col];
+	solve_grid2(grid, coordi, sub, sub_m);
 	print_solved_grid(grid, coordi, sub_m, params);
 }
 
@@ -130,27 +128,22 @@ void	fill_grid(char *str)
 
 	coordi.max_row = size_row(str);
 	coordi.max_col = size_col(str);
-	coordi.row = 0;
+	coordi.row = -1;
 	params = ft_get_parameters(str);
 	i = skip_first_line(str);
 	grid = malloc(sizeof(char *) * coordi.max_row);
-	while (coordi.row < coordi.max_row)
-	{
+	while (++coordi.row < coordi.max_row)
 		grid[coordi.row] = malloc(sizeof(char) * coordi.max_col);
-		coordi.row++;
-	}
-	coordi.row = 0;
-	while (coordi.row < coordi.max_row)
+	coordi.row = -1;
+	while (++coordi.row < coordi.max_row)
 	{
-		coordi.col = 0;
-		while (coordi.col < coordi.max_col)
+		coordi.col = -1;
+		while (++coordi.col < coordi.max_col)
 		{
 			grid[coordi.row][coordi.col] = str[i];
-			coordi.col++;
 			i++;
 		}
 		i += 1;
-		coordi.row++;
 	}
 	convert_grid(grid, coordi, params);
 }
