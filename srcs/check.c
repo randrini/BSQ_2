@@ -89,11 +89,8 @@ int		ft_check_grid(char *str)
 	int	j;
 	int k;
 
-	i = 0;
 	j = 0;
-	while (str[i] != '\n')
-		i++;
-	i += 1;
+	i = skip_first_line(str);
 	while (str[++i] != '\n' && str[i] != '\0')
 		j++;
 	i += 1;

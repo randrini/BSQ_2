@@ -123,9 +123,9 @@ void	print_solved_grid(char **grid, t_coord coordi,
 
 void	fill_grid(char *str)
 {
+	int		i;
 	char	**grid;
 	t_coord	coordi;
-	int		i;
 	t_param	*params;
 
 	coordi.max_row = size_row(str);
