@@ -53,9 +53,7 @@ void	convert_grid(char **grid, t_coord  coordi, t_param *params)
 
 void	solve_grid(char **grid, t_coord coordi, t_param *params)
 {
-	int		max_of_s;
-	int		max_i;
-	int		max_j;
+	t_submat	sub_m;
 	char	sub[coordi.max_row][coordi.max_col];
 
 	coordi.row = 0;
@@ -70,9 +68,9 @@ void	solve_grid(char **grid, t_coord coordi, t_param *params)
 		sub[0][coordi.col] = grid[0][coordi.col];
 		coordi.col++;
 	}
-	max_of_s = sub[0][0];
-	max_i = 0;
-	max_j = 0;
+	sub_m.max_of_s = sub[0][0];
+	sub_m.max_i = 0;
+	sub_m.max_j = 0;
 	coordi.row = 1;
 	while (coordi.row < coordi.max_row)
 	{
@@ -84,21 +82,21 @@ void	solve_grid(char **grid, t_coord coordi, t_param *params)
 						sub[coordi.row - 1][coordi.col - 1]) + 1;
 			else
 				sub[coordi.row][coordi.col] = 0;
-			if (sub[coordi.row][coordi.col] > max_of_s)
+			if (sub[coordi.row][coordi.col] > sub_m.max_of_s)
 			{
-				max_of_s = sub[coordi.row][coordi.col];
-				max_i = coordi.row;
-				max_j = coordi.col;
+				sub_m.max_of_s = sub[coordi.row][coordi.col];
+				sub_m.max_i = coordi.row;
+				sub_m.max_j = coordi.col;
 			}
 			coordi.col++;
 		}
 		coordi.row++;
 	}
-	print_solved_grid(grid, coordi, max_i, max_j, max_of_s, params);
+	print_solved_grid(grid, coordi, sub_m, params);
 }
 
 void	print_solved_grid(char **grid, t_coord coordi,
-		int max_i, int max_j, int max_of_s, t_param *params)
+		t_submat sub_m, t_param *params)
 {
 	coordi.row = 0;
 	while (coordi.row < coordi.max_row)
@@ -112,8 +110,8 @@ void	print_solved_grid(char **grid, t_coord coordi,
 			}
 			if (grid[coordi.row][coordi.col] == 0)
 				grid[coordi.row][coordi.col] = params->obst;
-			if ((coordi.row < max_i + 1 && coordi.row > max_i - max_of_s) && (coordi.col <= max_j &&
-						coordi.col > max_j - max_of_s))
+			if ((coordi.row < sub_m.max_i + 1 && coordi.row > sub_m.max_i - sub_m.max_of_s) && (coordi.col <= sub_m.max_j &&
+						coordi.col > sub_m.max_j - sub_m.max_of_s))
 				grid[coordi.row][coordi.col] = params->full;
 			ft_putchar(grid[coordi.row][coordi.col]);
 			coordi.col++;
