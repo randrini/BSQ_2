@@ -49,9 +49,16 @@ typedef struct	s_param
 	char	full;
 }				t_param;
 
-void			print_solved_grid(char **grid, int max_row,
-		int max_col, int max_i, int max_j, int max_of_s, t_param *params);
-void			solve_grid(char **grid, int row, int col, t_param *params);
+typedef struct	s_coord
+{
+	int		row;
+	int		col;
+	int		max_col;
+	int		max_row;
+}				t_coord;
+
+void			print_solved_grid(char **grid, t_coord coordi, int max_i, int max_j, int max_of_s, t_param *params);
+void			solve_grid(char **grid, t_coord coordi, t_param *params);
 t_param			*ft_get_parameters(char *buf);
 int				ft_strlen_mod(char *str);
 
