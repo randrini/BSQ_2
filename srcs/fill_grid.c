@@ -6,28 +6,11 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 16:19:48 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/08 22:06:13 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/08 22:24:47 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
-
-t_param		*ft_get_parameters(char *buf)
-{
-	int		i;
-	char	*str;
-	t_param	*params;
-
-	str = first_line(buf);
-	str[ft_strlen_mod(buf) - 3] = '\0';
-	i = ft_intlen(ft_atoi(str));
-	str = first_line(buf);
-	params = malloc(sizeof(params));
-	params->empty = str[i];
-	params->obst = str[i + 1];
-	params->full = str[i + 2];
-	return (params);
-}
 
 void		convert_grid(char **grid, t_coord coordi, t_param *params)
 {

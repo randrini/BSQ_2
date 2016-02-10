@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 15:37:41 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/06 17:15:40 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/08 22:18:16 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define BUFFER_SIZE 4096000000
+# define BUFFER_SIZE 409600000
 
 char			*parse_file(char *file);
 void			fill_grid(char *str);
@@ -57,14 +57,15 @@ typedef struct	s_coord
 	int		max_row;
 }				t_coord;
 
-typedef struct 	s_submat
+typedef struct	s_submat
 {
 	int		max_i;
 	int		max_j;
 	int		max_of_s;
 }				t_submat;
 
-void			print_solved_grid(char **grid, t_coord coordi, t_submat sub_m, t_param *params);
+void			print_solved_grid(char **grid, t_coord coordi,
+		t_submat sub_m, t_param *params);
 void			solve_grid(char **grid, t_coord coordi, t_param *params);
 t_param			*ft_get_parameters(char *buf);
 int				ft_strlen_mod(char *str);

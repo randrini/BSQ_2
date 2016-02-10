@@ -6,13 +6,30 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 15:37:00 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/06 19:10:31 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/08 22:23:56 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-char	*first_line(char *buf)
+t_param		*ft_get_parameters(char *buf)
+{
+	int		i;
+	char	*str;
+	t_param	*params;
+
+	str = first_line(buf);
+	str[ft_strlen_mod(buf) - 3] = '\0';
+	i = ft_intlen(ft_atoi(str));
+	str = first_line(buf);
+	params = malloc(sizeof(params));
+	params->empty = str[i];
+	params->obst = str[i + 1];
+	params->full = str[i + 2];
+	return (params);
+}
+
+char		*first_line(char *buf)
 {
 	char	*first_line;
 	int		i;
@@ -33,7 +50,7 @@ char	*first_line(char *buf)
 	return (first_line);
 }
 
-int		ft_strlen(char *str)
+int			ft_strlen(char *str)
 {
 	int	i;
 
@@ -43,7 +60,7 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-int		ft_intlen(int n)
+int			ft_intlen(int n)
 {
 	int i;
 
@@ -56,7 +73,7 @@ int		ft_intlen(int n)
 	return (i);
 }
 
-char	*parse_file(char *file)
+char		*parse_file(char *file)
 {
 	int			fd;
 	int			ret;
