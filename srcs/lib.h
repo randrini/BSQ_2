@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define BUFFER_SIZE 409600000
+# define BUFFER_SIZE 40960000
 
 char			*parse_file(char *file);
 void			fill_grid(char *str);
