@@ -35,12 +35,8 @@ void		convert_grid(char **grid, t_coord coordi, t_param *params)
 }
 
 void		solve_grid2(char **grid, t_coord coordi, char sub[coordi.max_row]
-		[coordi.max_col], t_submat sub_m)
+		[coordi.max_col], t_submat *sub_m)
 {
-	sub_m.max_of_s = sub[0][0];
-	sub_m.max_i = 0;
-	sub_m.max_j = 0;
-	coordi.row = 0;
 	while (++coordi.row < coordi.max_row)
 	{
 		coordi.col = 0;
@@ -52,11 +48,11 @@ void		solve_grid2(char **grid, t_coord coordi, char sub[coordi.max_row]
 				sub[coordi.row - 1][coordi.col - 1]) + 1;
 			else
 				sub[coordi.row][coordi.col] = 0;
-			if (sub[coordi.row][coordi.col] > sub_m.max_of_s)
+			if (sub[coordi.row][coordi.col] > sub_m->max_of_s)
 			{
-				sub_m.max_of_s = sub[coordi.row][coordi.col];
-				sub_m.max_i = coordi.row;
-				sub_m.max_j = coordi.col;
+				sub_m->max_of_s = sub[coordi.row][coordi.col];
+				sub_m->max_i = coordi.row;
+				sub_m->max_j = coordi.col;
 			}
 		}
 	}
@@ -73,7 +69,11 @@ void		solve_grid(char **grid, t_coord coordi, t_param *params)
 	coordi.col = -1;
 	while (++coordi.col < coordi.max_col)
 		sub[0][coordi.col] = grid[0][coordi.col];
-	solve_grid2(grid, coordi, sub, sub_m);
+	sub_m.max_of_s = sub[0][0];
+	sub_m.max_i = 0;
+	sub_m.max_j = 0;
+	coordi.row = 0;
+	solve_grid2(grid, coordi, sub, &sub_m);
 	print_solved_grid(grid, coordi, sub_m, params);
 }
 
