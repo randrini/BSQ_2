@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 15:37:16 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/08 22:04:53 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/11 13:22:27 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int		ft_stdin(void)
 	int		fd;
 	char	*buf;
 	int		ret;
-	
+
 	buf = (char*)malloc(sizeof(char) * 4096);
 	if (buf == NULL)
 		return (0);
 	fd = open("stdin_grid", O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0666);
 	if (fd == -1)
 		return (0);
-	while ((ret = read(0, buf, sizeof(buf) -1)))
+	while ((ret = read(0, buf, sizeof(buf) - 1)))
 	{
 		buf[ret] = '\0';
 		write(fd, buf, ft_strlen(buf));
@@ -35,7 +35,7 @@ int		ft_stdin(void)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int		i;
 	char	*buf;
