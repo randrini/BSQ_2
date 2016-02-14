@@ -80,8 +80,6 @@ char		*parse_file(char *file)
 	static char	buf[BUFFER_SIZE];
 
 	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		ft_error();
 	ret = read(fd, buf, BUFFER_SIZE);
 	buf[ret] = '\0';
 	close(fd);

@@ -40,26 +40,28 @@ int		main(int argc, char **argv)
 	int		i;
 	char	*buf;
 
-	if (argc > 1)
-	{
-		i = 1;
-		while (i < argc)
-		{
-			buf = parse_file(argv[i]);
-			if (ft_check_char(buf) == 1 && ft_check_file(buf) == 1 &&
-			ft_check_full_o(buf) == 1 && ft_check_grid(buf) == 1)
-				fill_grid(parse_file(argv[i]));
-			i++;
-		}
-	}
-	else if (ft_stdin() == 1)
+	if (argc == 1 && ft_stdin() == 1)
 	{
 		buf = parse_file("stdin_grid");
 		if (ft_check_char(buf) == 1 && ft_check_file(buf) == 1 &&
 		ft_check_full_o(buf) == 1 && ft_check_grid(buf) == 1)
 			fill_grid(parse_file("stdin_grid"));
 	}
-	else
-		ft_putstr("map error\n");
+	if (argc > 1)
+	{
+		i = 0;
+		while (++i < argc)
+		{
+			if (open(argv[i], O_RDONLY) > -1)
+			{
+				buf = parse_file(argv[i]);
+				if (ft_check_char(buf) == 1 && ft_check_file(buf) == 1 &&
+				ft_check_full_o(buf) == 1 && ft_check_grid(buf) == 1)
+					fill_grid(parse_file(argv[i]));
+			}
+			else
+				ft_putstr("map error\n");
+		}
+	}
 	return (0);
 }
