@@ -12,6 +12,19 @@
 
 #include "lib.h"
 
+int		ft_full_check(char *stream)
+{
+	if (ft_check_char(stream) != 1)
+		return (0);
+	if (ft_check_file(stream) != 1)
+		return (0);
+	if (ft_check_full_o(stream) != 1)
+		return (0);
+	if (ft_check_grid(stream) != 1)
+		return (0);
+	return (1);
+}
+
 int		ft_stdin(void)
 {
 	int		fd;
@@ -43,8 +56,7 @@ int		main(int argc, char **argv)
 	if (argc == 1 && ft_stdin() == 1)
 	{
 		buf = parse_file("stdin_grid");
-		if (ft_check_char(buf) == 1 && ft_check_file(buf) == 1 &&
-		ft_check_full_o(buf) == 1 && ft_check_grid(buf) == 1)
+		if (ft_full_check(buf) == 1)
 			fill_grid(parse_file("stdin_grid"));
 	}
 	if (argc > 1)
@@ -55,8 +67,7 @@ int		main(int argc, char **argv)
 			if (open(argv[i], O_RDONLY) > -1)
 			{
 				buf = parse_file(argv[i]);
-				if (ft_check_char(buf) == 1 && ft_check_file(buf) == 1 &&
-				ft_check_full_o(buf) == 1 && ft_check_grid(buf) == 1)
+				if (ft_full_check(buf) == 1)
 					fill_grid(parse_file(argv[i]));
 			}
 			else
