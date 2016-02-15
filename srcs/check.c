@@ -14,7 +14,7 @@
 
 int		ft_error(void)
 {
-	ft_putstr("map error\n");
+	//ft_putstr("map error\n");
 	return (0);
 }
 
