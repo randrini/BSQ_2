@@ -62,9 +62,8 @@ int		main(int argc, char **argv)
 {
 	int		i;
 
-	if (ft_stdin() == 1 && ft_full_check(parse_file("stdin_grid")) == 1)
-		fill_grid(parse_file("stdin_grid"));
-	else if (argc > 1)
+	
+	if (argc > 1)
 	{
 		i = 0;
 		while (++i < argc)
@@ -77,7 +76,12 @@ int		main(int argc, char **argv)
 				ft_putstr("map error\n");
 		}
 	}
-	else
-		ft_putstr("map error\n");
+	if (argc == 1 )
+	{
+		if ( ft_stdin() == 1 && ft_full_check(parse_file("stdin_grid")) == 1)
+			fill_grid(parse_file("stdin_grid"));
+		else
+			ft_putstr("map error\n");
+	}
 	return (0);
 }
