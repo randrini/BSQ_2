@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 15:37:16 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/11 13:22:27 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/15 15:25:22 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int		ft_grid_empty(int fd)
 {
 	int	size;
-	
-   	size = lseek(fd, 0, SEEK_END);
-	return(size);
+
+	size = lseek(fd, 0, SEEK_END);
+	return (size);
 }
 
 int		ft_full_check(char *stream)
@@ -62,15 +62,16 @@ int		main(int argc, char **argv)
 {
 	int		i;
 
-	if (/*argc == 1 && */ft_stdin() == 1 && ft_full_check(parse_file("stdin_grid")) == 1)
+	if (ft_stdin() == 1 && ft_full_check(parse_file("stdin_grid")) == 1)
 		fill_grid(parse_file("stdin_grid"));
 	else if (argc > 1)
 	{
 		i = 0;
 		while (++i < argc)
 		{
-			if (open(argv[i], O_RDONLY) > -1 && ft_grid_empty
-			(open(argv[i], O_RDONLY)) != 0 && ft_full_check(parse_file(argv[i])) == 1)
+			if (open(argv[i], O_RDONLY) > -1 &&
+					ft_grid_empty(open(argv[i], O_RDONLY)) != 0 &&
+					ft_full_check(parse_file(argv[i])) == 1)
 				fill_grid(parse_file(argv[i]));
 			else
 				ft_putstr("map error\n");

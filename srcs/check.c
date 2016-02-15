@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 16:51:02 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/08 22:02:20 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/15 15:21:01 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		ft_error(void)
 {
-	//ft_putstr("map error\n");
 	return (0);
 }
 
