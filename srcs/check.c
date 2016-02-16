@@ -29,7 +29,7 @@ int		ft_check_file(char *buf)
 	if (str[0] >= 48 && str[0] <= 57)
 	{
 		str[ft_strlen_mod(buf) - 3] = '\0';
-		if (ft_atoi(str) != size_col(buf))
+		if (ft_atoi(str) != size_row(buf))
 			return (ft_error());
 		i = ft_intlen(ft_atoi(str));
 		str = first_line(buf);
