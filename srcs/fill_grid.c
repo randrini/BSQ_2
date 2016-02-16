@@ -102,6 +102,8 @@ void		print_solved_grid(char **grid, t_coord coordi,
 		ft_putchar('\n');
 		coordi.row++;
 	}
+	free(params);
+	free(grid);
 }
 
 void		fill_grid(char *str)

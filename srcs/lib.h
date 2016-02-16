@@ -20,8 +20,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define BUFFER_SIZE 40960000
-
+char			*ft_strcat_mod(char *dest, char c);
 char			*parse_file(char *file);
 void			fill_grid(char *str);
 void			ft_putchar(char c);
@@ -29,7 +28,6 @@ void			ft_putstr(char *str);
 int				size_row(char *str);
 int				size_col(char *str);
 int				ft_min(int a, int b, int c);
-
 int				ft_atoi(char *str);
 int				skip_first_line(char *str);
 char			*first_line(char *str);

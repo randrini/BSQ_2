@@ -62,7 +62,7 @@ int			ft_strlen(char *str)
 
 int			ft_intlen(int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (n != 0)
@@ -73,15 +73,16 @@ int			ft_intlen(int n)
 	return (i);
 }
 
-char		*parse_file(char *file)
+char  *parse_file(char *file)
 {
-	int			fd;
-	int			ret;
-	static char	buf[BUFFER_SIZE];
-
+	int		fd;
+	char	buf;
+	char	*output;
+	
 	fd = open(file, O_RDONLY);
-	ret = read(fd, buf, BUFFER_SIZE);
-	buf[ret] = '\0';
+	output = "\0";
+	while(read(fd, &buf, 1))
+		output = ft_strcat_mod(output, buf);
 	close(fd);
-	return (buf);
+	return (output);
 }
