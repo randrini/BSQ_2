@@ -6,7 +6,7 @@
 #*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/02/05 20:14:49 by randrini          #+#    #+#             *#
-#*   Updated: 2016/02/05 20:48:28 by randrini         ###   ########.fr       *#
+#*   Updated: 2016/02/16 18:58:18 by randrini         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -29,5 +29,6 @@ clean:
 
 fclean: clean
 	@/bin/rm -rf $(NAME)
+	@/bin/rm -rf stdin_grid
 
 re: fclean all
