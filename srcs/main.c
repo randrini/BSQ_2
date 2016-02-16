@@ -12,23 +12,6 @@
 
 #include "lib.h"
 
-char	*ft_strcat_mod(char *dest, char c)
-{
-	int 	i;
-	char	*ret;
-
-	i = 0;
-	ret = malloc(ft_strlen(dest) + 2);
-	while(dest[i])
-	{
-		ret[i] = dest[i];
-		i++;
-	}
-	ret[i++] = c;
-	ret[i] = '\0';
-	return (ret);
-}
-
 int		ft_grid_empty(char *buf)
 {
 	int	i;

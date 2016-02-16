@@ -78,11 +78,23 @@ char  *parse_file(char *file)
 	int		fd;
 	char	buf;
 	char	*output;
+	int		i;
+	int		j;
 	
+	i = 0;
 	fd = open(file, O_RDONLY);
-	output = "\0";
 	while(read(fd, &buf, 1))
-		output = ft_strcat_mod(output, buf);
+		i++;
+	close(fd);
+	output = malloc(sizeof(char) * (i + 1));
+	j = 0;
+	fd = open(file, O_RDONLY);
+	while(read(fd, &buf, 1))
+	{
+			output[j] = buf;
+			j++;
+	}
+	//printf(" === OUTPUT ===\n%s\n", output);
 	close(fd);
 	return (output);
 }
