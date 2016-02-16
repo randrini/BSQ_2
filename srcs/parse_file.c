@@ -26,6 +26,7 @@ t_param		*ft_get_parameters(char *buf)
 	params->empty = str[i];
 	params->obst = str[i + 1];
 	params->full = str[i + 2];
+	free(str);
 	return (params);
 }
 
@@ -94,6 +95,7 @@ char		*parse_file(char *file)
 		output[j] = buf;
 		j++;
 	}
+	output[j] = '\0';
 	close(fd);
 	return (output);
 }

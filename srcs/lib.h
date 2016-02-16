@@ -64,6 +64,8 @@ typedef struct	s_submat
 
 void			print_solved_grid(char **grid, t_coord coordi,
 		t_submat sub_m, t_param *params);
+void			print_solved_grid2(char **grid, t_coord coordi,
+		t_param *params);
 void			solve_grid(char **grid, t_coord coordi, t_param *params);
 t_param			*ft_get_parameters(char *buf);
 int				ft_strlen_mod(char *str);

@@ -73,8 +73,44 @@ void		solve_grid(char **grid, t_coord coordi, t_param *params)
 	sub_m.max_i = 0;
 	sub_m.max_j = 0;
 	coordi.row = 0;
-	solve_grid2(grid, coordi, sub, &sub_m);
-	print_solved_grid(grid, coordi, sub_m, params);
+	if (coordi.max_row == 1 || coordi.max_col == 1)
+		print_solved_grid2(grid, coordi, params);
+	else
+	{
+		solve_grid2(grid, coordi, sub, &sub_m);
+		print_solved_grid(grid, coordi, sub_m, params);
+	}
+}
+
+void		print_solved_grid2(char **grid, t_coord coordi,
+		t_param *params)
+{
+	int		flag;
+
+	flag = 0;
+	coordi.row = 0;
+	while (coordi.row < coordi.max_row)
+	{
+		coordi.col = 0;
+		while (coordi.col < coordi.max_col)
+		{
+			if (grid[coordi.row][coordi.col] == 1)
+				grid[coordi.row][coordi.col] = params->empty;
+			if (grid[coordi.row][coordi.col] == 0)
+				grid[coordi.row][coordi.col] = params->obst;
+			if (grid[coordi.row][coordi.col] == params->empty && flag == 0)
+			{
+				grid[coordi.row][coordi.col] = params->full;
+				flag = 1;
+			}
+			ft_putchar(grid[coordi.row][coordi.col]);
+			coordi.col++;
+		}
+		ft_putchar('\n');
+		coordi.row++;
+	}
+	free(params);
+	free(grid);
 }
 
 void		print_solved_grid(char **grid, t_coord coordi,
@@ -87,9 +123,7 @@ void		print_solved_grid(char **grid, t_coord coordi,
 		while (coordi.col < coordi.max_col)
 		{
 			if (grid[coordi.row][coordi.col] == 1)
-			{
 				grid[coordi.row][coordi.col] = params->empty;
-			}
 			if (grid[coordi.row][coordi.col] == 0)
 				grid[coordi.row][coordi.col] = params->obst;
 			if ((coordi.row < sub_m.max_i + 1 && coordi.row > sub_m.max_i -

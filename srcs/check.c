@@ -54,9 +54,9 @@ int		ft_check_char(char *buf)
 	{
 		if (buf[i] == tmp_param->empty ||
 				buf[i] == tmp_param->obst || buf[i] == '\n')
-			i++;
+				i++;
 		else
-			return (ft_error());
+			return (0);
 	}
 	return (1);
 }
