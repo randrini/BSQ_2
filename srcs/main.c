@@ -12,12 +12,14 @@
 
 #include "lib.h"
 
-int		ft_grid_empty(int fd)
+int		ft_grid_empty(char *buf)
 {
-	int	size;
+	int	i;
 
-	size = lseek(fd, 0, SEEK_END);
-	return (size);
+	i = 0;
+	while (buf[i] != '\0')
+		i++;
+	return (i);
 }
 
 int		ft_full_check(char *stream)
@@ -50,7 +52,7 @@ int		ft_stdin(void)
 		buf[ret] = '\0';
 		write(fd, buf, ft_strlen(buf));
 	}
-	if (ft_grid_empty(fd) == 0)
+	if (ft_grid_empty(buf) == 0)
 		return (-1);
 	if (close(fd) == -1 || buf == NULL)
 		return (-1);
@@ -62,23 +64,22 @@ int		main(int argc, char **argv)
 {
 	int		i;
 
-	
 	if (argc > 1)
 	{
 		i = 0;
 		while (++i < argc)
 		{
 			if (open(argv[i], O_RDONLY) > -1 &&
-					ft_grid_empty(open(argv[i], O_RDONLY)) != 0 &&
+					ft_grid_empty(parse_file(argv[i])) > 0 &&
 					ft_full_check(parse_file(argv[i])) == 1)
 				fill_grid(parse_file(argv[i]));
 			else
 				ft_putstr("map error\n");
 		}
 	}
-	if (argc == 1 )
+	if (argc == 1)
 	{
-		if ( ft_stdin() == 1 && ft_full_check(parse_file("stdin_grid")) == 1)
+		if (ft_stdin() == 1 && ft_full_check(parse_file("stdin_grid")) == 1)
 			fill_grid(parse_file("stdin_grid"));
 		else
 			ft_putstr("map error\n");
