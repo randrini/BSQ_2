@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 15:37:16 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/15 15:25:22 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/16 18:54:45 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		ft_stdin(void)
 int		main(int argc, char **argv)
 {
 	int		i;
-	
+
 	if (argc > 1)
 	{
 		i = 0;

@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 15:37:00 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/08 22:23:56 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/16 18:56:07 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,26 +73,26 @@ int			ft_intlen(int n)
 	return (i);
 }
 
-char  *parse_file(char *file)
+char		*parse_file(char *file)
 {
 	int		fd;
 	char	buf;
 	char	*output;
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	fd = open(file, O_RDONLY);
-	while(read(fd, &buf, 1))
+	while (read(fd, &buf, 1))
 		i++;
 	close(fd);
 	output = malloc(sizeof(char) * (i + 1));
 	j = 0;
 	fd = open(file, O_RDONLY);
-	while(read(fd, &buf, 1))
+	while (read(fd, &buf, 1))
 	{
-			output[j] = buf;
-			j++;
+		output[j] = buf;
+		j++;
 	}
 	close(fd);
 	return (output);
