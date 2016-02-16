@@ -117,7 +117,7 @@ void		fill_grid(char *str)
 	coordi.max_col = size_col(str);
 	coordi.row = -1;
 	params = ft_get_parameters(str);
-	i = skip_first_line(str);
+	i = skip_first_line(str) - 1;
 	grid = malloc(sizeof(char *) * coordi.max_row);
 	while (++coordi.row < coordi.max_row)
 		grid[coordi.row] = malloc(sizeof(char) * coordi.max_col);
@@ -126,11 +126,9 @@ void		fill_grid(char *str)
 	{
 		coordi.col = -1;
 		while (++coordi.col < coordi.max_col)
-		{
-			grid[coordi.row][coordi.col] = str[i];
-			i++;
-		}
+			grid[coordi.row][coordi.col] = str[++i];
 		i += 1;
 	}
+	free(str);
 	convert_grid(grid, coordi, params);
 }

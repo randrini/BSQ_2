@@ -94,7 +94,6 @@ char  *parse_file(char *file)
 			output[j] = buf;
 			j++;
 	}
-	//printf(" === OUTPUT ===\n%s\n", output);
 	close(fd);
 	return (output);
 }
