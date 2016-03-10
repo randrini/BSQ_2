@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 16:51:02 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/15 15:21:01 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/16 23:49:06 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_check_char(char *buf)
 	{
 		if (buf[i] == tmp_param->empty ||
 				buf[i] == tmp_param->obst || buf[i] == '\n')
-				i++;
+			i++;
 		else
 			return (0);
 	}

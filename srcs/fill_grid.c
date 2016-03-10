@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 16:19:48 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/08 22:24:47 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/16 23:52:14 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void		print_solved_grid2(char **grid, t_coord coordi,
 	int		flag;
 
 	flag = 0;
-	coordi.row = 0;
 	while (coordi.row < coordi.max_row)
 	{
 		coordi.col = 0;

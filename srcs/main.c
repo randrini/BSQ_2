@@ -6,7 +6,7 @@
 /*   By: randrini <randrini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 15:37:16 by randrini          #+#    #+#             */
-/*   Updated: 2016/02/16 18:54:45 by randrini         ###   ########.fr       */
+/*   Updated: 2016/02/16 23:49:36 by randrini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		ft_stdin(void)
 	return (1);
 }
 
-void		fill_grid(char *str)
+void	fill_grid(char *str)
 {
 	int		i;
 	char	**grid;
