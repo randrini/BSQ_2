@@ -28,8 +28,6 @@ int		ft_full_check(char *stream)
 		return (0);
 	if (ft_check_file(stream) != 1)
 		return (0);
-	if (ft_check_full_o(stream) != 1)
-		return (0);
 	if (ft_check_grid(stream) != 1)
 		return (0);
 	return (1);

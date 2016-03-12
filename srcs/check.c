@@ -30,7 +30,7 @@ int		ft_check_file(char *buf)
 	{
 		str[ft_strlen_mod(buf) - 3] = '\0';
 		if (ft_atoi(str) != size_row(buf))
-			return (ft_error());
+			return (0);
 		i = ft_intlen(ft_atoi(str));
 		str = first_line(buf);
 		if (str[i] == tmp_param->empty)
@@ -40,7 +40,7 @@ int		ft_check_file(char *buf)
 		if (str[i] == tmp_param->full)
 			return (1);
 	}
-	return (ft_error());
+	return (0);
 }
 
 int		ft_check_char(char *buf)
@@ -78,7 +78,7 @@ int		ft_check_full_o(char *str)
 		else
 			return (1);
 	}
-	return (ft_error());
+	return (0);
 }
 
 int		ft_check_grid(char *str)
@@ -98,7 +98,7 @@ int		ft_check_grid(char *str)
 		while (str[i] != '\n' && str[i] != '\0')
 			++i;
 		if ((i - 1 - k) != j)
-			return (ft_error());
+			return (0);
 		else
 		{
 			i++;
