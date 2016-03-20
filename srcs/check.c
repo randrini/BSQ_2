@@ -14,7 +14,7 @@
 
 int		ft_error(void)
 {
-	return (0);
+	return (1);
 }
 
 int		ft_check_file(char *buf)
@@ -91,7 +91,7 @@ int		ft_check_grid(char *str)
 	i = skip_first_line(str);
 	while (str[++i] != '\n' && str[i] != '\0')
 		j++;
-	i += 1;
+	i += 2;
 	k = i;
 	while (str[i] != '\0')
 	{
